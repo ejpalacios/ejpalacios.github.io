@@ -1,0 +1,29 @@
+<p class="archive__item-excerpt p-summary" itemprop="description">
+    {% if post.category == "participant" %}
+        <i class="fas fa-fw fa-user-group" aria-hidden="true"></i>
+        Project Participant
+        {% elsif post.category == "fellowship" %}
+        <i class="fas fa-fw fa-user" aria-hidden="true"></i>
+        Funded Fellow
+        {% elsif post.category == "scientific_coordinator" %}
+        <i class="fas fa-fw fa-user-group" aria-hidden="true"></i>
+        Scientitic Coordinator
+    {% endif %}
+    {% if post.pi %}
+        — Principal Investigator: {{ post.pi }}
+    {% endif %}
+    <br>
+    <i class="fas fa-fw fa-euro-sign" aria-hidden="true"></i>
+    {{ post.funding_programme }}
+    {% if post.funding_agency %}
+        — {{ post.funding_agency }}
+    {% endif %}
+    {% if post.location %}
+        <br>
+        <i class="fas fa-fw fa-location-dot" aria-hidden="true"></i>
+        {{ post.location }}
+    {% endif %}
+    {% if post.coordinator %}
+        — Coordinator: {{ post.coordinator }}
+    {% endif %}
+</p>

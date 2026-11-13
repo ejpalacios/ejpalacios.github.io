@@ -1,0 +1,175 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Emilio J. Palacios-García
+title_separator: "|"
+masthead_title: "Home"
+email: epalacios-garcia@ucc.ie
+description: "Personal Website of Emilio J. Palacios-García" # this means to ignore newlines until "baseurl:"
+github_username: ejpalacios
+search: false
+locale: "en-GB"
+url: "https://ejpalacios.github.io"
+baseurl: ""
+repository: "ejpalacios/ejpalacios.github.io"
+
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: default # air, aqua, contrast, dark, dirt, neon, mint, plum, sunrise
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /blog/page:num/
+timezone: Europe/Dublin
+
+include:
+  - _pages
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .venv
+  - pyproject.toml
+  - uv.lock
+  - markdown_generator
+  - Makefile
+  - README.md
+  - .jekyll-cache
+  - gemfiles
+
+# Plugins (previously gems:)
+plugins:
+  - jekyll-remote-theme
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+
+author:
+  name: "Emilio J. Palacios-García"
+  avatar: "/assets/images/bio-photo.jpg"
+  bio: "Research Fellow"
+  location: "Cork, Ireland"
+  googlescholar: "Sqtrj1UAAAAJ"
+  links:
+    - label: "University College Cork"
+      icon: "fas fa-fw fa-building-columns"
+      url: "https://research.ucc.ie/en/persons/emilio-jose-palacios-garcia/"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:epalacios-garcia@ucc.ie"
+    - label: "Google Scholar"
+      icon: "fab fa-fw fa-google-scholar"
+      url: "https://scholar.google.com/citations?user=Sqtrj1UAAAAJ&hl=en"
+    - label: "ORCID"
+      icon: "fab fa-fw fa-orcid"
+      url: "https://orcid.org/0000-0003-2703-6532"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ejpalacios"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/ejpalacios/"
+
+footer:
+  links:
+    - label: "Scholar"
+      icon: "fab fa-fw fa-google-scholar"
+      url: "https://scholar.google.com/citations?user=Sqtrj1UAAAAJ&hl=en"
+    - label: "ORCID"
+      icon: "fab fa-fw fa-orcid"
+      url: "https://orcid.org/0000-0003-2703-6532"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ejpalacios"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/ejpalacios/"
+
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+collections:
+  publications:
+    output: true
+    permalink: /:collection/:path/
+  talks:
+    output: true
+    permalink: /:collection/:path/
+  projects:
+    output: true
+    permalink: /:collection/:path/
+  teaching:
+    output: true
+    permalink: /:collection/:path/
+  opensource:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: "_publications"
+      type: publications
+    values:
+      layout: single
+      classes: wide
+      share: true
+      author_profile: true
+  - scope:
+      path: "_talks"
+      type: talks
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: "_projects"
+      type: projects
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: "_teaching"
+      type: teaching
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: "_opensource"
+      type: opensource
+    values:
+      layout: single
+      author_profile: true

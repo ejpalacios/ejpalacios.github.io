@@ -1,0 +1,39 @@
+{% assign locale = include.locale | default: site.locale %}
+{% assign card_type = include.type | default: 'list' %}
+{% if post.header.teaser %}
+    {% assign teaser = post.header.teaser %}
+{% else %}
+    {% assign teaser = site.teaser %}
+{% endif %}
+{% if page.show_teaser == false %}
+    {% assign teaser = false %}
+{% endif %}
+{% if post.id %}
+    {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+    {% assign title = post.title %}
+{% endif %}
+{% assign meta_include = "archive-meta-" | append: include.collection | append: ".html" %}
+<div class="{{ card_type }}__item">
+    <article class="archive__item"
+             itemscope
+             itemtype="https://schema.org/CreativeWork"
+             {% if post.locale %}lang="{{ post.locale }}"{% endif %}>
+        {% if teaser %}
+            <div class="archive__item-teaser">
+                <img src="{{ teaser | relative_url }}" alt="">
+            </div>
+        {% endif %}
+        <div class="archive__item-body">
+            <h3 class="archive__item-title no_toc p-name" itemprop="headline">
+                {% if post.link %}
+                    <a href="{{ post.link }}">{{ title }}</a> <a class="u-url" href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+                {% else %}
+                    <a class="u-url" href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+                {% endif %}
+            </h3>
+            {% include page__meta.html locale=locale type=card_type %}
+            {% include {{ meta_include }} %}
+        </div>
+    </article>
+</div>

@@ -1,0 +1,33 @@
+---
+---
+
+@import "minimal-mistakes";
+
+/* Teaser beside text in list layout */
+.list__item .archive__item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.25em;
+}
+
+.list__item .archive__item-teaser {
+  flex: 0 0 200px;
+  margin: 0;
+}
+
+.list__item .archive__item-teaser img {
+  width: 100%;
+  height: auto;
+}
+
+/* Stack on small screens */
+@media (max-width: 600px) {
+  .list__item .archive__item {
+    flex-direction: column;
+  }
+  .list__item .archive__item-teaser {
+    flex-basis: auto;
+    width: 100%;
+  }
+}

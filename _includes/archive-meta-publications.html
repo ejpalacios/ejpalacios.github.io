@@ -1,0 +1,40 @@
+<p class="archive__item-excerpt p-summary" itemprop="description">
+    <i class="fas fa-fw fa-user-group" aria-hidden="true"></i>
+    {{ post.authors }}.
+    <br>
+    {% if post.category == "article" %}
+        <i class="far fa-fw fa-file-lines" aria-hidden="true"></i>
+   {% elsif post.category == "conference" %}
+        <i class="fas fa-fw fa-chalkboard" aria-hidden="true"></i>
+    {% elsif post.category == "book" %}
+        <i class="fas fa-fw fa-book" aria-hidden="true"></i>
+    {% else %}
+        <i class="far fa-fw fa-file-lines" aria-hidden="true"></i>
+    {% endif %}
+    {{ post.venue }}
+    {% if post.doi or post.file or post.slides %}
+        <br>
+        {% if post.file %}
+            <i class="far fa-fw fa-file-pdf" aria-hidden="true"></i>
+            <a href="{{ post.file }}">PDF</a>
+        {% endif %}
+        {% if post.slides %}
+            <i class="far fa-fw fa-file-powerpoint" aria-hidden="true"></i>
+            <a href="{{ post.slides }}">Slides</a>
+        {% endif %}
+        {% if post.google_id and site.author.googlescholar %}
+            <i class="fab fa-fw fa-google-scholar" aria-hidden="true"></i>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user={{ site.author.googlescholar }}&amp;citation_for_view={{ site.author.googlescholar }}:{{ post.google_id }}">Google Scholar</a>
+        {% endif %}
+        {% if post.doi %}
+            <i class="fas fa-fw fa-link" aria-hidden="true"></i>
+            <a href="https://doi.org/{{ post.doi }}">DOI</a>
+            <br>
+            <span class="__dimensions_badge_embed__"
+                  data-doi="{{ post.doi }}"
+                  data-style="small_rectangle"
+                  data-legend="hover-right"
+                  style="margin: 3px; display: inline-block"></span>
+        {% endif %}
+    {% endif %}
+</p>

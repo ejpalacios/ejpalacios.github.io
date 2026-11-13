@@ -1,0 +1,9 @@
+.bundle
+vendor
+_site
+.jekyll-cache
+.sass-cache
+.ruby-lsp
+.venv
+__pycache__
+

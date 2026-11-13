@@ -1,0 +1,48 @@
+---
+layout: archive
+---
+
+{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
+{{ content }}
+{% assign coll = page.collection | default: "posts" %}
+{% assign entries_layout = page.entries_layout | default: "list" %}
+{% assign card_include = "archive-card.html" %}
+{% if coll == "posts" %}
+    {% assign card_include = "archive-single.html" %}
+{% endif %}
+{% assign items = site[coll] | where_exp: "item", "item.hidden != true" %}
+{% if page.group_by_year == false %}
+    {% assign items = items | sort: "path" %}
+    <div class="entries-{{ entries_layout }}">
+        {% for post in items %}
+            {% include {{ card_include }} locale=locale type=entries_layout collection=coll %}
+        {% endfor %}
+    </div>
+{% else %}
+    {%- comment -%} newest first, both across years and inside each year {%- endcomment -%}
+    {% assign items = items | sort: "date" | reverse %}
+    {% assign postsInYear = items | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+    {% if page.include_index %}
+        <ul class="taxonomy__index">
+            {% for year in postsInYear %}
+                <li>
+                    <a href="#{{ year.name }}">
+                        <strong>{{ year.name }}</strong> <span class="taxonomy__count">{{ year.items | size }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% for year in postsInYear %}
+        <section id="{{ year.name }}" class="taxonomy__section">
+            <h2 class="archive__subtitle">{{ year.name }}</h2>
+            <div class="entries-{{ entries_layout }}">
+                {% for post in year.items %}
+                    {% include {{ card_include }} locale=locale type=entries_layout collection=coll %}
+                {% endfor %}
+            </div>
+            <a href="#page-title"
+               class="back-to-top">{{ site.data.ui-text[locale].back_to_top | default: 'Back to Top' }} ↑</a>
+        </section>
+    {% endfor %}
+{% endif %}

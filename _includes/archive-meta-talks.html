@@ -1,0 +1,28 @@
+<p class="archive__item-excerpt p-summary" itemprop="description">
+    {% if post.category == "presentation" %}
+        <i class="fas fa-fw fa-chalkboard" aria-hidden="true"></i>
+        Presentation
+        {% elsif post.category == "seminar" %}
+        <i class="fab fa-fw fa-readme" aria-hidden="true"></i>
+        Seminar
+        {% elsif post.category == "workshop" %}
+        <i class="fab fa-fw fa-readme" aria-hidden="true"></i>
+        Workshop
+        {% elsif post.category == "panel" %}
+        <i class="fas fa-fw fa-user-group" aria-hidden="true"></i>
+        Panel Session
+        {% elsif post.category == "special" %}
+        <i class="fas fa-fw fa-user-group" aria-hidden="true"></i>
+        Special Session
+    {% endif %}
+    <br>
+    {% if post.venue %}
+        <i class="fas fa-fw fa-building" aria-hidden="true"></i>
+        {{ post.venue }}
+    {% endif %}
+    <br>
+    {% if post.location %}
+        <i class="fas fa-fw fa-location-dot" aria-hidden="true"></i>
+        {{ post.location }}
+    {% endif %}
+</p>

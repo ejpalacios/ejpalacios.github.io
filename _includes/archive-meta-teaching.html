@@ -1,0 +1,10 @@
+<p class="archive__item-excerpt p-summary" itemprop="description">
+    <i class="fas fa-fw fa-user-graduate" aria-hidden="true"></i>
+    {{ post.type }}
+    <br>
+    <i class="fas fa-fw fa-info" aria-hidden="true"></i>
+    {{ post.description }}
+    <br>
+    <i class="fas fa-fw fa-location-dot" aria-hidden="true"></i>
+    {{ post.venue }}{% if post.location %}, {{ post.location }}{% endif %}
+</p>
